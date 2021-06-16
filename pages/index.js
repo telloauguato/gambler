@@ -5,10 +5,6 @@ export default function Home() {
 
   const [cota, setCota] = useState('')
 
-  const handleCota = (e) => {
-    setCota(e.target.value.toUpperCase())
-  }
-
   return (
     <>
       <Head>
@@ -40,9 +36,9 @@ export default function Home() {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="XXX0000000"
-                  value={cota}
-                  onChange={handleCota}
+                  placeholder="XXX000000XXXXXX"
+                  value={cota.toUpperCase()}
+                  onChange={setCota}
                 />
               </div>
             </div>
@@ -54,7 +50,7 @@ export default function Home() {
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <i className="ri-search-line"></i>
                 </span>
-                Buscar {cota}
+                Buscar {cota.toUpperCase()}
               </button>
             </div>
           </form>
