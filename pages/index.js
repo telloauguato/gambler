@@ -6,6 +6,7 @@ export default function Home() {
       <Head>
         <title>Gambler</title>
         <link rel="icon" href="/favicon.svg" />
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
@@ -82,9 +83,9 @@ export default function Home() {
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  A
+                  <i className="ri-searchh-fill"></i>
                 </span>
-                Sign in
+                Buscar
               </button>
             </div>
           </form>
