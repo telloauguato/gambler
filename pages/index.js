@@ -25,7 +25,7 @@ export default function Home() {
               Insira o número da sua cota
             </p>
           </div>
-          <form className="mt-8 space-y-6" action={`c/${cota}`}>
+          <form className="mt-8 space-y-6" action={`c/${cota}`.toUpperCase()}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="cota" className="sr-only">
@@ -50,7 +50,7 @@ export default function Home() {
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <i className="ri-search-line"></i>
                 </span>
-                Buscar {cota}
+                Buscar
               </button>
             </div>
           </form>
