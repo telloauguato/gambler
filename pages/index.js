@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div className=''>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Gambler</title>
+        <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <main className=''>
