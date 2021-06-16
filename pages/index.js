@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import Head from 'next/head'
 
 export default function Home() {
+
+  const [cota, setCota] = useState('')
+
   return (
     <>
       <Head>
@@ -18,23 +22,21 @@ export default function Home() {
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Gambler</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              Insira o numero da sua cota
+              Insira o número da sua cota
             </p>
           </div>
           <form className="mt-8 space-y-6" action="#">
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
+                <label htmlFor="cota" className="sr-only">
+                  Número da cota
                 </label>
                 <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="cota"
+                  type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  placeholder="XXX0000000"
                 />
               </div>
             </div>
