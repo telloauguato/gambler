@@ -5,6 +5,10 @@ export default function Home() {
 
   const [cota, setCota] = useState('')
 
+  const handleCota = (e) => {
+    setCota(e.target.value.toUpperCase())
+  }
+
   return (
     <>
       <Head>
@@ -25,7 +29,7 @@ export default function Home() {
               Insira o número da sua cota
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#">
+          <form className="mt-8 space-y-6" action={cota}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="cota" className="sr-only">
@@ -37,6 +41,8 @@ export default function Home() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="XXX0000000"
+                  value={cota}
+                  onChange={handleCota}
                 />
               </div>
             </div>
@@ -48,7 +54,7 @@ export default function Home() {
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <i className="ri-search-line"></i>
                 </span>
-                Buscar
+                Buscar {cota}
               </button>
             </div>
           </form>
