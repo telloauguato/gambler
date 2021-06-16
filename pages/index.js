@@ -25,7 +25,7 @@ export default function Home() {
               Insira o número da sua cota
             </p>
           </div>
-          <form className="mt-8 space-y-6" action={`c/${cota}`.toUpperCase()}>
+          <form className="mt-8 space-y-6" action={`c/${cota.toUpperCase()}`}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="cota" className="sr-only">
