@@ -11,10 +11,12 @@ export default function Cota({ name }) {
   const r = useRouter()
   const c = r.query.cota
 
+
+  console.log(name);
   return (
     <>
       <Head>
-        <title>Gambler {name}</title>
+        <title>Gambler</title>
         <link rel="icon" href="/favicon.svg" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
@@ -68,9 +70,18 @@ export default function Cota({ name }) {
 
 
 export async function getServerSideProps() {
+
+  const res = await fetch('https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*', {
+    headers: new Headers({
+      "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
+    })
+  })
+
+  const json = await res.json()
+
   return {
     props: {
-      name: 'qw'
+      name: json
     }
   }
 }
