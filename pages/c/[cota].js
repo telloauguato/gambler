@@ -8,9 +8,6 @@ export default function Cota({ name }) {
 
   const [cota, setCota] = useState('')
 
-  const r = useRouter()
-  const c = r.query.cota
-
 
   console.log(name);
   return (
@@ -30,7 +27,7 @@ export default function Cota({ name }) {
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Gambler</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              Insira o número da sua cota: {c}
+              Insira o número da sua cota:
             </p>
           </div>
           <form className="mt-8 space-y-6" action={cota}>
@@ -71,7 +68,10 @@ export default function Cota({ name }) {
 
 export async function getServerSideProps() {
 
-  const res = await fetch('https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*', {
+  const r = useRouter()
+  const c = r.query.cota
+
+  const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*&cota=eq.${c.substring(0, 9)}`, {
     headers: new Headers({
       "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
     })
