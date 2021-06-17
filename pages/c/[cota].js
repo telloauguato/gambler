@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-export default function Cota() {
+export default function Cota({ name }) {
 
   const [cota, setCota] = useState('')
 
@@ -14,7 +14,7 @@ export default function Cota() {
   return (
     <>
       <Head>
-        <title>Gambler</title>
+        <title>Gambler {name}</title>
         <link rel="icon" href="/favicon.svg" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
@@ -64,4 +64,13 @@ export default function Cota() {
       </div>
     </>
   )
+}
+
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      name: 'qw'
+    }
+  }
 }
