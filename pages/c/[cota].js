@@ -8,7 +8,8 @@ export default function Cota() {
 
   const [cota, setCota] = useState('')
 
-  const { c } = useRouter()
+  const r = useRouter()
+  const c = r.query.cota
 
   return (
     <>
