@@ -87,7 +87,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       results: filteredGame,
-      bet: params.cota //filteredQoute
+      //bet: filteredQoute
     }
   }
 }
