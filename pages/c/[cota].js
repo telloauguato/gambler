@@ -11,7 +11,7 @@ export default function Cota({ data, filtered }) {
   //const r = useRouter()
   //const c = r.query.cota
 
-  console.log(data,filtered);
+  console.log(data);
 
   return (
     <>
@@ -86,8 +86,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: json,
-      filtered
+      data: json
     }
   }
 }
