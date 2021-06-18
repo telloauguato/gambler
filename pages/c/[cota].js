@@ -8,12 +8,15 @@ export default function Cota({ data }) {
 
   const [cota, setCota] = useState('')
 
+  const r = useRouter()
+  const c = r.query.cota
+
 
   console.log(data);
   return (
     <>
       <Head>
-        <title>Gambler</title>
+        <title>Gambler {c}</title>
         <link rel="icon" href="/favicon.svg" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
