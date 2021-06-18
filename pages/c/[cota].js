@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-export default function Cota({ data, filtered }) {
+export default function Cota({ data }) {
 
   const [cota, setCota] = useState('')
 
@@ -16,7 +16,7 @@ export default function Cota({ data, filtered }) {
   return (
     <>
       <Head>
-        <title>Gambler {c}</title>
+        <title>Gambler</title>
         <link rel="icon" href="/favicon.svg" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
