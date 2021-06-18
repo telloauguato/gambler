@@ -77,7 +77,7 @@ export async function getServerSideProps({ params }) {
   const jsonGame = await resGame.json()
   //const jsonQoute = await resQoute.json()
 
-  const filteredGame = jsonGame.filter(val => val['cota'] === 'BRA202101YTTGYT'.substr(0, 9));
+  //const filteredGame = jsonGame.filter(val => val['cota'] === 'BRA202101YTTGYT'.substr(0, 9));
   //const filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
 
 
