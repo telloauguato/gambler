@@ -82,7 +82,7 @@ export async function getServerSideProps({ params }) {
 
 
   filteredGame.map(val => {
-    val[0].results.home = 'teste'
+    //val[0].results.home = 'teste'
   })
 
 
