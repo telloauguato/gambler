@@ -3,11 +3,11 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ resuls }) {
+export default function Cota({ resuls, bet }) {
 
   const [cota, setCota] = useState('')
 
-  console.log(results);
+  console.log(results, bet);
 
   return (
     <>
@@ -71,12 +71,8 @@ export async function getServerSideProps({ params }) {
     "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
   })
 
-  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
-    headers
-  })
-  const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, {
-    headers
-  })
+  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, { headers })
+  const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
 
   const jsonGame = await resGame.json()
   const jsonQoute = await resQoute.json()
@@ -85,12 +81,15 @@ export async function getServerSideProps({ params }) {
   var filteredQoute = jsonGame.filter(val => val['cota'] === params.cota);
 
 
-
+  filteredGame.map(val => {
+    val[0].results.home = 'teste'
+  })
 
 
   return {
     props: {
-      results: filteredGame
+      results: filteredGame,
+      bet: filteredQoute
     }
   }
 }
