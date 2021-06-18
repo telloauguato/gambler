@@ -3,11 +3,11 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ resuls, bet }) {
+export default function Cota({ resuls, bet, params }) {
 
   const [cota, setCota] = useState('')
 
-  console.log(results, bet);
+  console.log(results, bet, params);
 
   return (
     <>
@@ -87,7 +87,8 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       results: filteredGame,
-      //bet: filteredQoute
+      //bet: filteredQoute,
+      params
     }
   }
 }
