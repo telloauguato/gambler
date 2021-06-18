@@ -3,11 +3,11 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ data }) {
+export default function Cota({ resuls }) {
 
   const [cota, setCota] = useState('')
 
-  console.log(data);
+  console.log(results);
 
   return (
     <>
@@ -67,24 +67,30 @@ export default function Cota({ data }) {
 
 export async function getServerSideProps({ params }) {
 
-  const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
-    headers: new Headers({
-      "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
-    })
+  const headers = new Headers({
+    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
   })
 
-  const json = await res.json()
+  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
+    headers
+  })
+  const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, {
+    headers
+  })
 
-  const c = params.cota;
+  const jsonGame = await resGame.json()
+  const jsonQoute = await resQoute.json()
 
-  const sub = c.substr(0, 9)
+  var filteredGame = jsonGame.filter(val => val['cota'] === params.cota.substr(0, 9));
+  var filteredQoute = jsonGame.filter(val => val['cota'] === params.cota);
 
-  var filtered = json.filter(val => val['cota'] === sub);
+
+
 
 
   return {
     props: {
-      data: filtered
+      results: filteredGame
     }
   }
 }
