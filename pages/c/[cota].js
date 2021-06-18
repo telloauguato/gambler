@@ -4,12 +4,14 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-export default function Cota({ data, c }) {
+export default function Cota({ data, filtered }) {
 
   const [cota, setCota] = useState('')
 
   //const r = useRouter()
   //const c = r.query.cota
+
+  console.log(data,filtered);
 
   return (
     <>
@@ -69,9 +71,6 @@ export default function Cota({ data, c }) {
 
 export async function getServerSideProps() {
 
-  const r = useRouter()
-  const c = r.query.cota
-
   const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
       "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
@@ -80,10 +79,15 @@ export async function getServerSideProps() {
 
   const json = await res.json()
 
+  const { results } = json
+
+  var filtered = json.filter(val => val['cota'] === 'BRA202101');
+
+
   return {
     props: {
-      data: json,
-      c
+      data: results,
+      filtered
     }
   }
 }
