@@ -68,8 +68,8 @@ export default function Cota({ data }) {
 
 export async function getServerSideProps() {
 
-  const r = useRouter()
-  const c = r.query.cota
+  //const r = useRouter()
+  //const c = r.query.cota
 
   const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
