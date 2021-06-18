@@ -1,14 +1,13 @@
 import Header from '../../components/Header'
 import Data from '../../components/Data'
 import { useState } from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-export default function Cota({ data }) {
+export default function Cota({ data, c, sub }) {
 
   const [cota, setCota] = useState('')
 
-  console.log(data);
+  console.log(data, c, sub);
 
   return (
     <>
@@ -66,7 +65,7 @@ export default function Cota({ data }) {
 }
 
 
-export async function getServerSideProps({params}) {
+export async function getServerSideProps({ params }) {
 
   const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
@@ -78,12 +77,16 @@ export async function getServerSideProps({params}) {
 
   const c = params.cota;
 
-  var filtered = json.filter(val => val['cota'] === c.substr(0, 7));
+  const sub = c.substr(0, 7)
+
+  var filtered = json.filter(val => val['cota'] === sub);
 
 
   return {
     props: {
-      data: filtered
+      data: filtered,
+      c,
+      sub
     }
   }
 }
