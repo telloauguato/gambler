@@ -8,9 +8,6 @@ export default function Cota({ data }) {
 
   const [cota, setCota] = useState('')
 
-  //const r = useRouter()
-  //const c = r.query.cota
-
   console.log(data);
 
   return (
@@ -79,7 +76,10 @@ export async function getServerSideProps() {
 
   const json = await res.json()
 
-  var filtered = json.filter(val => val['cota'] === 'BRA202101');
+  const r = useRouter()
+  const c = r.query.cota
+
+  var filtered = json.filter(val => val['cota'] === c.substr(0, 7));
 
 
   return {
