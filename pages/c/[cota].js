@@ -3,11 +3,11 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ data, c, sub }) {
+export default function Cota({ data }) {
 
   const [cota, setCota] = useState('')
 
-  console.log(data, c, sub);
+  console.log(data);
 
   return (
     <>
@@ -77,16 +77,14 @@ export async function getServerSideProps({ params }) {
 
   const c = params.cota;
 
-  const sub = c.substr(0, 7)
+  const sub = c.substr(0, 9)
 
   var filtered = json.filter(val => val['cota'] === sub);
 
 
   return {
     props: {
-      data: filtered,
-      c,
-      sub
+      data: filtered
     }
   }
 }
