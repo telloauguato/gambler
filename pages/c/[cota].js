@@ -79,9 +79,9 @@ export async function getServerSideProps() {
 
   const json = await res.json()
 
-  const { results } = json
+  //const { results } = json
 
-  var filtered = results.filter(val => val['cota'] === 'BRA202101');
+  //var filtered = results.filter(val => val['cota'] === 'BRA202101');
 
 
   return {
