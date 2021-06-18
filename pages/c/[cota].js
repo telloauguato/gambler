@@ -11,6 +11,7 @@ export default function Cota({ data }) {
   const r = useRouter()
   const c = r.query.cota
 
+  console.log(r.query)
 
   console.log(data);
   return (
