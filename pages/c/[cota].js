@@ -4,16 +4,13 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-export default function Cota({ data }) {
+export default function Cota({ data, c }) {
 
   const [cota, setCota] = useState('')
 
-  const r = useRouter()
-  const c = r.query.cota
+  //const r = useRouter()
+  //const c = r.query.cota
 
-  console.log(r.query)
-
-  console.log(data);
   return (
     <>
       <Head>
@@ -72,8 +69,8 @@ export default function Cota({ data }) {
 
 export async function getServerSideProps() {
 
-  //const r = useRouter()
-  //const c = r.query.cota
+  const r = useRouter()
+  const c = r.query.cota
 
   const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
@@ -85,7 +82,8 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: json
+      data: json,
+      c
     }
   }
 }
