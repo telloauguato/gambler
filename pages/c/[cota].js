@@ -72,13 +72,13 @@ export async function getServerSideProps({ params }) {
   })
 
   const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, { headers })
-  const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
+  //const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
 
   const jsonGame = await resGame.json()
-  const jsonQoute = await resQoute.json()
+  //const jsonQoute = await resQoute.json()
 
   var filteredGame = jsonGame.filter(val => val['cota'] === params.cota.substr(0, 9));
-  var filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
+  //var filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
 
 
   filteredGame.map(val => {
@@ -89,7 +89,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       results: filteredGame,
-      bet: filteredQoute
+      bet: 'rest' //filteredQoute
     }
   }
 }
