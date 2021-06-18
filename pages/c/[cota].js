@@ -66,7 +66,7 @@ export default function Cota({ data }) {
 }
 
 
-export async function getServerSideProps() {
+export async function getServerSideProps({params}) {
 
   const res = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
@@ -76,8 +76,7 @@ export async function getServerSideProps() {
 
   const json = await res.json()
 
-  const r = useRouter()
-  const c = r.query.cota
+  const c = params.cota;
 
   var filtered = json.filter(val => val['cota'] === c.substr(0, 7));
 
