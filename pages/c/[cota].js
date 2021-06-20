@@ -2,9 +2,9 @@
 //import Data from '../../components/Data'
 import Head from 'next/head'
 
-export default function Cota({ results, bet = 1, params }) {
+export default function Cota({ results, bet = 1, c }) {
 
-  console.log(results, bet, params);
+  console.log(results, bet, c);
 
   return (
     <>
@@ -82,7 +82,7 @@ export async function getServerSideProps({ params }) {
     props: {
       results: jsonGame,
       //bet: filteredQoute,
-      params
+      c: params.cota
     }
   }
 }
