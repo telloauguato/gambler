@@ -2,17 +2,8 @@
 //import Data from '../../components/Data'
 import Head from 'next/head'
 
-export default async function Cota() {
-
-  const headers = new Headers({
-    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
-  })
-  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, { headers })
-  //const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
-
-  const jsonGame = await resGame.json()
-
-  console.log(jsonGame);
+export default async function Cota({ result, bet, c }) {
+  console.log(result, bet, c);
 
   return (
     <>
@@ -40,7 +31,7 @@ export default async function Cota() {
   )
 }
 
-/*
+
 export async function getServerSideProps() {
   const headers = new Headers({
     "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
@@ -67,4 +58,3 @@ export async function getServerSideProps() {
     }
   }
 }
-*/
