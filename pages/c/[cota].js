@@ -72,22 +72,13 @@ export async function getServerSideProps() {
       "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
     })
   })
-  //const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
 
   const jsonGame = await resGame.json()
-  //const jsonQoute = await resQoute.json()
-
-  //const filteredGame = jsonGame.filter(val => val['cota'] === 'BRA202101YTTGYT'.substr(0, 9));
-  //const filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
-
-
-  //const filteredGame = jsonGame.map(val => { val[0].results.home = 'teste' })
 
 
   return {
     props: {
       results: jsonGame,
-      //bet: filteredQoute,
     }
   }
 }
