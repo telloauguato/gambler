@@ -28,7 +28,7 @@ export default function Cota({ info, results, bet, day }) {
             </Head>
 
             <div className="flex align-center justify-between">
-                <div className="p-4 m-8 sm:w-1/3 border border-gray-200">
+                <div className="p-4 sm:w-1/3 border border-gray-200">
                     <i className="ri-todo-line ri-3x"></i>
                     <div className="mt-2">
                         <div className=" my-3 text-2xl font-bold justify-between">
