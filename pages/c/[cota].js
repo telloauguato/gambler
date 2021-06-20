@@ -54,8 +54,8 @@ export async function getServerSideProps() {
     props: {
       results: jsonGame,
       //bet: filteredQoute,
-      bet = 1,
-      c = 1
+      bet: 1,
+      c: 1
     }
   }
 }
