@@ -2,7 +2,7 @@
 //import Data from '../../components/Data'
 import Head from 'next/head'
 
-export default function Cota({ resuls, bet = 1, params }) {
+export default function Cota({ results, bet = 1, params }) {
 
   console.log(results, bet, params);
 
