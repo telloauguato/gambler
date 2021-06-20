@@ -10,7 +10,7 @@ export default function Cota({ resuls, bet = 1, params }) {
     <>
       <Head>
         <title>Gambler</title>
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="../favicon.svg" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -81,7 +81,7 @@ export async function getServerSideProps({ params }) {
     props: {
       results: jsonGame,
       //bet: filteredQoute,
-      params
+      params: params.cota
     }
   }
 }
