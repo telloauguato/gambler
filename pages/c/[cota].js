@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 import Head from 'next/head'
 
 export default function Cota({ results, bet }) {
-  console.log(results, bet);
+  //console.log(results, bet);
 
   let points = 0
 

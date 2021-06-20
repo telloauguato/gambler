@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 export default function Cota({ info, results, bet, day }) {
-    console.log(results, bet, day, info);
+    //console.log(results, bet, day, info);
 
     const d = new Date(parseInt(day))
     const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
