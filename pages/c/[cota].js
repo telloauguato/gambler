@@ -3,7 +3,7 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ resuls, bet = '', params = '' }) {
+export default function Cota({ resuls, bet, params }) {
 
   const [cota, setCota] = useState('')
 
@@ -65,35 +65,28 @@ export default function Cota({ resuls, bet = '', params = '' }) {
 }
 
 
-export async function getServerSideProps() {
-/*
-  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
-    headers: new Headers({
-      "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
-    })
+export async function getServerSideProps({ params }) {
+  const header = new Headers({
+    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
   })
+  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, { headers })
+  //const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
 
   const jsonGame = await resGame.json()
+  //const jsonQoute = await resQoute.json()
 
-*/
-var url = "https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*";
+  //const filteredGame = jsonGame.filter(val => val['cota'] === 'BRA202101YTTGYT'.substr(0, 9));
+  //const filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
 
-var jsonGame
-var xhr = new XMLHttpRequest();
-xhr.open("GET", url);
 
-xhr.setRequestHeader("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ");
+  //const filteredGame = jsonGame.map(val => { val[0].results.home = 'teste' })
 
-xhr.onreadystatechange = function () {
-   if (xhr.readyState === 4) {
-      jsonGame = xhr.responseText
-   }};
-
-xhr.send();
 
   return {
     props: {
       results: jsonGame,
+      //bet: filteredQoute,
+      params
     }
   }
 }
