@@ -44,7 +44,7 @@ export async function getServerSideProps({ params }) {
 
   return {
     props: {
-      results: data,
+      results: games,
       //bet: filteredQoute,
       bet: 1,
       c: 1
