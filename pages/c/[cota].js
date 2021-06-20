@@ -1,11 +1,8 @@
-import Header from '../../components/Header'
-import Data from '../../components/Data'
-import { useState } from 'react'
+//import Header from '../../components/Header'
+//import Data from '../../components/Data'
 import Head from 'next/head'
 
 export default function Cota({ resuls, bet = 1, params }) {
-
-  const [cota, setCota] = useState('')
 
   console.log(results, bet, params);
 
@@ -29,7 +26,7 @@ export default function Cota({ resuls, bet = 1, params }) {
               Insira o número da sua cota:
             </p>
           </div>
-          <form className="mt-8 space-y-6" action={cota}>
+          <form className="mt-8 space-y-6">
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="cota" className="sr-only">
@@ -41,8 +38,6 @@ export default function Cota({ resuls, bet = 1, params }) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="XXX000000XXXXXX"
-                  value={cota}
-                  onChange={(e) => setCota(e.target.value)}
                 />
               </div>
             </div>
@@ -54,7 +49,7 @@ export default function Cota({ resuls, bet = 1, params }) {
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <i className="ri-search-line"></i>
                 </span>
-                Buscar {cota}
+                Buscar
               </button>
             </div>
           </form>
