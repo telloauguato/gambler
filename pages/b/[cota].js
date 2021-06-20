@@ -27,8 +27,8 @@ export default function Cota({ info, results, bet, day }) {
                 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
             </Head>
 
-            <div className="flex align-center justify-between">
-                <div className="p-4 sm:w-1/3 border border-gray-200">
+            <div className="flex justify-between align-center w-screen">
+                <div className="p-4 sm:w-1/3">
                     <i className="ri-todo-line ri-3x"></i>
                     <div className="mt-2">
                         <div className=" my-3 text-2xl font-bold justify-between">
@@ -91,11 +91,8 @@ export default function Cota({ info, results, bet, day }) {
                     <div className="mt-4 flex align-center justify-center">
                         <img className="w-1/2" src={`http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=https%3A%2F%2Fgambler.vercel.app%2Fc%2F${c}`} alt="qrcode" />
                     </div>
-                    <div className="text-center">
-                        https://gambler.vercel.app/c/{c}
-                    </div>
                     <div className="text-center mt-2 text-gray-400">
-                        QlJBMjAyMT
+                        https://gambler.vercel.app/c/<br />{c}
                     </div>
                 </div>
             </div>
