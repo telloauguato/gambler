@@ -3,7 +3,7 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ resuls, bet, params }) {
+export default function Cota({ resuls, bet = 1, params }) {
 
   const [cota, setCota] = useState('')
 
