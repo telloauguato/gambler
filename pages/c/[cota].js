@@ -3,8 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 //import Data from '../../components/Data'
 import Head from 'next/head'
 
-export default async function Cota({ result, bet, c }) {
-  console.log(result, bet, c);
+export default function Cota({ results, bet }) {
+  console.log(results, bet);
 
   return (
     <>
@@ -23,7 +23,7 @@ export default async function Cota({ result, bet, c }) {
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Gambler</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              g
+
             </p>
           </div>
         </div>
@@ -37,18 +37,36 @@ export async function getServerSideProps({ params }) {
 
   const supabase = createClient('https://vvvcixwhneodouvexhzx.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ')
 
-  let { data: games, error } = await supabase
+  let { data: games } = await supabase
     .from('games')
     .select('*')
     .eq('cota', params.cota.substr(0, 9))
 
+  let { data: qoutes } = await supabase
+    .from('qoutes')
+    .select('*')
+    .eq('name', params.cota)
+
+  let { data: teams } = await supabase
+    .from('teams')
+    .select('*')
+
+  let { results } = await games[0]
+  let { bet } = await qoutes[0]
+
+  //results.map(v => v.home = teams[v.home])
+  results.map(v => {
+    const filterHome = teams.filter(team => team.id === v.home)
+    const filterAway = teams.filter(team => team.id === v.away)
+
+    v.home = filterHome[0]
+    v.away = filterAway[0]
+  })
 
   return {
     props: {
-      results: games,
-      //bet: filteredQoute,
-      bet: 1,
-      c: 1
+      results,
+      bet,
     }
   }
 }
