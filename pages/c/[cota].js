@@ -3,7 +3,7 @@ import Data from '../../components/Data'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Cota({ resuls, bet, params }) {
+export default function Cota({ resuls, bet = '', params = '' }) {
 
   const [cota, setCota] = useState('')
 
@@ -65,7 +65,7 @@ export default function Cota({ resuls, bet, params }) {
 }
 
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps() {
 
   const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
@@ -88,7 +88,6 @@ export async function getServerSideProps({ params }) {
     props: {
       results: jsonGame,
       //bet: filteredQoute,
-      params
     }
   }
 }
