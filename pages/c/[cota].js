@@ -32,17 +32,16 @@ export default async function Cota({ result, bet, c }) {
 }
 
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ params }) {
   const headers = new Headers({
     "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
   })
-  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, { headers })
+  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*&cota=eq.${params.cota.substr(0, 9)}`, { headers })
   //const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
 
   const jsonGame = await resGame.json()
   //const jsonQoute = await resQoute.json()
 
-  //const filteredGame = jsonGame.filter(val => val['cota'] === params.cota.substr(0, 9));
   //const filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
 
 
