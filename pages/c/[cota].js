@@ -40,7 +40,8 @@ export async function getServerSideProps({ params }) {
   let { data: games, error } = await supabase
     .from('games')
     .select('*')
-  
+    .eq('cota', params.cota.substr(0, 9))
+
 
   return {
     props: {
