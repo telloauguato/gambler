@@ -1,3 +1,4 @@
+import { createClient } from '@supabase/supabase-js'
 //import Header from '../../components/Header'
 //import Data from '../../components/Data'
 import Head from 'next/head'
@@ -33,24 +34,17 @@ export default async function Cota({ result, bet, c }) {
 
 
 export async function getServerSideProps({ params }) {
-  const headers = new Headers({
-    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
-  })
-  const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*&cota=eq.${params.cota.substr(0, 9)}`, { headers })
-  //const resQoute = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/qoutes?select=*`, { headers })
 
-  const jsonGame = await resGame.json()
-  //const jsonQoute = await resQoute.json()
+  const supabase = createClient('https://vvvcixwhneodouvexhzx.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ')
 
-  //const filteredQoute = jsonQoute.filter(val => val['name'] === params.cota);
-
-
-  //const filteredGame = jsonGame.map(val => { val[0].results.home = 'teste' })
-
+  let { data: games, error } = await supabase
+    .from('games')
+    .select('*')
+  
 
   return {
     props: {
-      results: jsonGame,
+      results: data,
       //bet: filteredQoute,
       bet: 1,
       c: 1
