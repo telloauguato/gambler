@@ -66,7 +66,7 @@ export default function Cota({ resuls, bet = '', params = '' }) {
 
 
 export async function getServerSideProps() {
-
+/*
   const resGame = await fetch(`https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*`, {
     headers: new Headers({
       "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
@@ -75,6 +75,21 @@ export async function getServerSideProps() {
 
   const jsonGame = await resGame.json()
 
+*/
+var url = "https://vvvcixwhneodouvexhzx.supabase.co/rest/v1/games?select=*";
+
+var jsonGame
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.setRequestHeader("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ");
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      jsonGame = xhr.responseText
+   }};
+
+xhr.send();
 
   return {
     props: {
