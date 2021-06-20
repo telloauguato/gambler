@@ -2,7 +2,7 @@
 //import Data from '../../components/Data'
 import Head from 'next/head'
 
-export default function Cota() {
+export default async function Cota() {
 
   const header = new Headers({
     "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMzc4NTk3MywiZXhwIjoxOTM5MzYxOTczfQ.Gu0w5BH85pNyhmnADiXrEfjG5_BR6aw8q5nwQhbMezQ"
